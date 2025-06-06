@@ -9,7 +9,6 @@
 • 🏗️ I'm currently building **Villa MVP** - an AI-powered rental platform solving housing accessibility for students and young professionals.  
 • 🎯 I'm exploring **AI integration in real estate** and **algorithm visualization** for educational impact.  
 • 🤝 I'm looking to collaborate on **proptech**, **edtech**, or **mission-driven** software projects.  
-• 🏛️ I was **CTO at Harvard Student Agencies** (Aug 2023 - Nov 2024), managing an $8M revenue operation.  
 • 🏈 I play **Division I football at Harvard** and compete in **chess**.  
 • ⚡ Fun fact: I built a **shortest path algorithm visualizer** because I couldn't find good study tools for my Data Structures class!
 
@@ -33,14 +32,8 @@
 ### [Villa MVP](https://rentwithvilla.com) 🏠
 AI-powered rental property management platform connecting landlords and tenants with intelligent chat functionality and digital signature workflows.
 
-### [Shortest Path Algorithm Visualizer](https://shortest-path-visualizer-pi.vercel.app/) 📊
-Interactive educational tool visualizing Dijkstra's and Bellman-Ford algorithms with step-by-step execution for students learning graph algorithms.
-
-### SquareTable 🍽️
-CS50 Final Project - Restaurant recommendation platform with secure authentication and personalized preference algorithms.
-
 ---
 
-> *"I believe in building technology that solves real problems for real people - whether that's helping students find housing or making algorithms easier to understand."*
+> *"I believe in building technology that solves real problems for real people*
 
 ---
