@@ -1,6 +1,6 @@
 # Xavier Agostino
 
-**Harvard CS '26 | Software Engineer | Entrepreneur**
+**Harvard CS '26 | Full Stack Developer | Builder**
 
 ---
 
@@ -10,7 +10,7 @@
 • 🎯 I'm exploring **AI integration in real estate** and **algorithm visualization** for educational impact.  
 • 🤝 I'm looking to collaborate on **proptech**, **edtech**, or **mission-driven** software projects.  
 • 🏛️ I was **CTO at Harvard Student Agencies** (Aug 2023 - Nov 2024), managing an $8M revenue operation.  
-• 🏈 I play **Division I football at Harvard** and compete in **chess** - both taught me strategic thinking under pressure.  
+• 🏈 I play **Division I football at Harvard** and compete in **chess**.  
 • ⚡ Fun fact: I built a **shortest path algorithm visualizer** because I couldn't find good study tools for my Data Structures class!
 
 ## 🛠️ Technologies & Tools
@@ -50,7 +50,3 @@ CS50 Final Project - Restaurant recommendation platform with secure authenticati
 > *"I believe in building technology that solves real problems for real people - whether that's helping students find housing or making algorithms easier to understand."*
 
 ---
-
-## 📝 Short Bio (for other platforms)
-
-*Computer Science student at Harvard building technology that solves real-world problems. Former CTO at Harvard Student Agencies ($8M revenue), Palantir Launch Program participant, and co-founder of Villa MVP. When I'm not coding, you'll find me on the football field or at a chess board. I believe in creating software that makes a meaningful impact - whether that's helping students navigate housing markets or making complex algorithms accessible to everyone.*
