@@ -1,10 +1,8 @@
-# Xavier Agostino
-
-**Full Stack Developer | Builder**
+# 👨🏿‍💻 Xavier Agostino
 
 ---
 
-## 🧠 About Me
+## About Me
 
 • 🏗️ I'm currently building **Villa MVP** - an AI-powered rental platform solving housing accessibility for students and young professionals.  
 • 🎯 I'm exploring **AI integration in real estate** and **algorithm visualization** for educational impact.  
