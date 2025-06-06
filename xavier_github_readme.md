@@ -1,6 +1,6 @@
 # Xavier Agostino
 
-**Harvard CS '26 | Full Stack Developer | Builder**
+**Full Stack Developer | Builder**
 
 ---
 
@@ -28,10 +28,6 @@
 ![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
-## 📊 GitHub Stats
-
-![Xavier's GitHub Stats](https://github-readme-stats.vercel.app/api?username=XavierAgostino&show_icons=true&theme=dark&hide_border=true&count_private=true)
-
 ## 🚀 Featured Projects
 
 ### [Villa MVP](https://rentwithvilla.com) 🏠
@@ -44,8 +40,6 @@ Interactive educational tool visualizing Dijkstra's and Bellman-Ford algorithms 
 CS50 Final Project - Restaurant recommendation platform with secure authentication and personalized preference algorithms.
 
 ---
-
-📧 **Connect with me:** [LinkedIn](https://linkedin.com/in/xavieragostino) | 🌐 **Portfolio:** [rentwithvilla.com](https://rentwithvilla.com)
 
 > *"I believe in building technology that solves real problems for real people - whether that's helping students find housing or making algorithms easier to understand."*
 
