@@ -4,7 +4,6 @@
 
 ## About Me
 
-• 🏗️ I'm currently building **Villa MVP** - an AI-powered rental platform solving housing accessibility for students and young professionals.  
 • 🎯 I'm exploring **AI integration in real estate** and **algorithm visualization** for educational impact.  
 • 🤝 I'm looking to collaborate on **proptech**, **edtech**, or **mission-driven** software projects.  
 • 🏈 I play **Division I football at Harvard** and compete in **chess**.  
