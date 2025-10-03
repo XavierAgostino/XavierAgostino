@@ -2,9 +2,9 @@
 
 CS student at Harvard, D1 football player, and I build things on the side.
 
-I'm into AI-powered apps, algorithm visualizations, and anything proptech or edtech related. Currently working on rental property management tools and educational software that actually makes sense.
+I'm into AI-powered apps, algorithm visualizations, and anything tech-related. Previously worked on rental property management tools and educational software that actually makes sense.
 
-When I'm not coding or on the field, I'm probably playing chess or trying to explain Dijkstra's algorithm to my teammates.
+When I'm not coding or on the field, I'm probably playing chess or binging some soapy TV Dramas.
 
 ## Tech I Use
 
