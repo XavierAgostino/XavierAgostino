@@ -1,10 +1,8 @@
 # 👋 Hey, I'm Xavier Agostino
 
-CS student at Harvard, D1 football player, and I build things that combine sports and software.
+CS student at Harvard, D1 football player, and I build things that solve real problems.
 
-I'm into AI-powered apps, sports analytics, algorithm visualizations, and anything tech-related. Previously worked on rental property management tools and educational software that actually makes sense.
-
-When I'm not coding or on the field, I'm probably playing chess or binging some soapy TV Dramas.
+I'm into sports analytics, algorithm visualization, AI-powered apps, and data pipelines. Previously worked on rental property platforms and educational tools. When I'm not coding or on the field, I'm probably playing chess or binging soapy TV dramas.
 
 ## Tech I Use
 
@@ -18,13 +16,11 @@ When I'm not coding or on the field, I'm probably playing chess or binging some 
 
 ## Stuff I've Built
 
-**[CFP Selection Simulator](https://github.com/xavieragostino/cfp-selection-simulator)** - Data-driven College Football Playoff ranking system using 5 mathematical algorithms (Elo, Massey, Colley, SOR, SOS). Analyzes 752 games to generate objective playoff brackets. Built with Python, NumPy, pandas, and Plotly. 61% historical accuracy vs CFP committee selections.
+**[CFP Selection Simulator](https://github.com/xavieragostino/cfp-selection-simulator)** - Objective College Football Playoff ranking system using ensemble methodology combining 5 mathematical algorithms (Colley Matrix, Massey, Elo, SOR, SOS). Processes 10,000+ FBS games with data caching that cuts API calls by 85%. Achieves 0.73 Spearman correlation against historical CFP committee selections. Built with Python, Docker, pandas, and Plotly.
 
-**[Villa](https://rentwithvilla.com)** - Rental property management platform with AI chat for landlords and tenants. Built with Next.js, TypeScript, and Supabase.
+**[AlgoPlatform](https://algo-platform.vercel.app)** - Educational platform for visualizing computer science algorithms. Built this when I couldn't find good tools to study graph algorithms. Interactive visualizers for Dijkstra's and Bellman-Ford with step-by-step execution, real-time data structure updates, and full mobile support. Next.js, React, TypeScript.
 
-**[Shortest Path Visualizer](https://shortest-path-visualizer-pi.vercel.app)** - Made this to study for my Data Structures class. Visualizes Dijkstra's and Bellman-Ford algorithms step-by-step.
-
-**SquareTable** - Restaurant recommendation platform using PostgreSQL and Google OAuth. My CS50 final project.
+**[Villa](https://rentwithvilla.com)** - Rental property management platform with AI-powered chat connecting landlords and tenants. OpenAI integration for intelligent Q&A, secure document management, and digital signatures. Next.js, TypeScript, Supabase.
 
 ---
 
