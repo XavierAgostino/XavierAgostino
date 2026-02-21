@@ -8,7 +8,7 @@ Most of my projects start the same way. I need something, it does not exist, or 
 
 I think a lot about architecture and long term maintainability. Technical debt compounds quickly, and I would rather design for scale early than rewrite everything later.
 
-Outside of code, I play chess.
+Outside of code, I play chess and catan.
 
 ## Tech
 
