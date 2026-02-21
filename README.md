@@ -1,10 +1,14 @@
 # 👋🏾 Hey, Xavier Agostino
 
-Harvard CS senior. Four years of D1 football. I build things when the existing tools don't cut it.
+Harvard CS student and former D1 football player. I build things when the existing tools do not solve the problem well.
 
-Right now I'm building **[Base Case](https://github.com/xavieragostino/base-case)**, an AI-native interview prep platform for infrastructure engineering. The idea is that modern technical interviews are shifting toward production systems (LLM inference, vector search, distributed orchestration) and current prep tools are still stuck on algorithm grinding.
+Right now I am building Base Case, an AI native interview prep platform focused on infrastructure and production systems. Interviews are moving beyond algorithm puzzles and toward designing real world systems, especially AI powered infrastructure, but most prep platforms still focus on LeetCode style problems.
 
-Most of my projects start the same way: I need something, it doesn't exist or the options are bad, so I build it. The CFP simulator came from wanting an objective ranking system for college football. AlgoPlatform came from not being able to find a decent graph algorithm visualizer while taking CS1240. Villa came from watching how broken landlord-tenant communication is. I care a lot about writing code that will outlive me. Technical debt compounds fast and I'd rather get the architecture right early than hack something together that falls apart at scale. Outside of code I play chess and watch way too many soapy TV dramas.
+Most of my projects start the same way. I need something, it does not exist, or the options are weak, so I build it. The CFP simulator came from wanting a more objective playoff ranking system. AlgoPlatform came from struggling to find a solid graph visualizer while taking CS1240. Villa came from seeing how inefficient landlord tenant workflows are.
+
+I think a lot about architecture and long term maintainability. Technical debt compounds quickly, and I would rather design for scale early than rewrite everything later.
+
+Outside of code, I play chess.
 
 ## Tech
 
