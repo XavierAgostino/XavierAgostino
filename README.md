@@ -32,4 +32,4 @@ Outside of code, I play chess.
 
 ---
 
-xavieragostino@college.harvard.edu | [LinkedIn](https://linkedin.com/in/xavieragostino)
+xavieragostino@college.harvard.edu | [![LinkedIn](https://img.shields.io/badge/-_-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/xavieragostino)
