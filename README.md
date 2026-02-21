@@ -2,8 +2,7 @@
 
 Harvard CS senior. Four years of D1 football. I build things when the existing tools don't cut it.
 
-Right now I'm building **[Base Case](https://github.com/xavieragostino/base-case)**, an AI-native interview prep platform for infrastructure engineering. The idea is that modern technical interviews are shifting toward production systems (LLM inference, vector search, distributed orchestration) and current prep tools are still stuck on algorithm grinding. Also helping build **Blur**, a Chrome extension that detects and redacts personal
-information in your prompts before they reach AI tools like ChatGPT, Claude, an Gemini.
+Right now I'm building **[Base Case](https://github.com/xavieragostino/base-case)**, an AI-native interview prep platform for infrastructure engineering. The idea is that modern technical interviews are shifting toward production systems (LLM inference, vector search, distributed orchestration) and current prep tools are still stuck on algorithm grinding.
 
 Most of my projects start the same way: I need something, it doesn't exist or the options are bad, so I build it. The CFP simulator came from wanting an objective ranking system for college football. AlgoPlatform came from not being able to find a decent graph algorithm visualizer while taking CS1240. Villa came from watching how broken landlord-tenant communication is. I care a lot about writing code that will outlive me. Technical debt compounds fast and I'd rather get the architecture right early than hack something together that falls apart at scale. Outside of code I play chess and watch way too many soapy TV dramas.
 
