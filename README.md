@@ -1,6 +1,6 @@
 # Hey, I’m Xavier Agostino 👋🏾
 
-Harvard CS student and former Division I football player. I build tools around problems I have run into myself, usually when the existing options feel scattered, slow, or harder to use than they should be.
+Harvard CS student and former Division I football player. I build tools around problems I have run into myself, usually when the existing options feel scattered, slow, or hard to use.
 
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
@@ -17,7 +17,7 @@ Harvard CS student and former Division I football player. I build tools around p
 ## Current projects
 
 - **[Base Case](https://base-case.app)** — Interview prep with a focused coding workspace, structured practice, and guided help in one place.
-- **[CFP Selection Simulator](https://github.com/XavierAgostino/cfp-selection-simulator)** — A college football ranking simulator that makes team comparisons and selection arguments explicit.
+- **[CFP Selection Simulator](https://github.com/XavierAgostino/cfp-selection-simulator)** — College football rankings, but with the selection arguments made visible.
 - **[AlgoPlatform](https://algo-platform.vercel.app)** — An algorithm visualizer that lets you step through graph paths instead of just reading pseudocode.
 - **[Villa](https://rentwithvilla.com)** — A rental management workspace for landlord-tenant communication, documents, and day-to-day workflows.
 
@@ -30,7 +30,6 @@ Harvard CS student and former Division I football player. I build tools around p
 
 - I played four years of Division I football at Harvard.
 - I like chess, Catan, and clean developer setups.
-- I spend too much time tuning my terminal.
 - I usually learn best by building the tool I wish existed.
 
 </details>
