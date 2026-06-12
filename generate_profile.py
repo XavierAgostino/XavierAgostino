@@ -62,7 +62,7 @@ DARK_FLOOR = 46  # pixels darker than this become empty space (kills bg noise)
 GAMMA = 0.62     # < 1 brightens midtones so the face renders dense
 
 # Crop to the head before converting so the face gets the resolution.
-CROP = (0.20, 0.0, 0.80, 0.78)  # left, top, right, bottom (fractions)
+CROP = (0.20, 0.0, 0.80, 0.70)  # left, top, right, bottom (fractions)
 
 # Elliptical vignette: keep the centered portrait, fade out background bokeh.
 ELLIPSE_CX, ELLIPSE_CY = 0.49, 0.50   # center (fraction of image)
@@ -95,6 +95,10 @@ def ascii_art(path: str) -> list[str]:
             lum = ((v - DARK_FLOOR) / (255 - DARK_FLOOR)) ** GAMMA
             row += RAMP[min(int(lum * len(RAMP)), len(RAMP) - 1)]
         rows.append(row.rstrip())
+    while rows and not rows[0]:
+        rows.pop(0)
+    while rows and not rows[-1]:
+        rows.pop()
     return rows
 
 
