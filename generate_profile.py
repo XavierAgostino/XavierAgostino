@@ -12,6 +12,7 @@ needed for private repo/commit counts to be included.
 import json
 import os
 import sys
+import time
 import urllib.request
 from datetime import date
 from html import escape
@@ -28,6 +29,8 @@ STATS = {  # fallback when no API token is available (snapshot 2026-06-12)
     "stars": 4,
     "commits": 1335,
     "followers": 6,
+    "loc_add": 562036,
+    "loc_del": 84625,
 }
 
 BIRTHDATE = date(2003, 7, 14)        # uptime = age
@@ -41,17 +44,20 @@ FONT_SIZE = 16
 CHAR_W = 9.65           # monospace advance at 16px
 LINE_H = 20
 PAD_X, PAD_Y = 28, 26
+SCALE = 1.18            # display scale (SVG is vector, so this stays crisp)
 
 THEMES = {
     "dark": {
         "bg": "#161b22", "border": "#30363d",
         "fg": "#c9d1d9", "key": "#ffa657", "val": "#79c0ff",
         "dots": "#8b949e", "art": "#c9d1d9",
+        "green": "#56d364", "red": "#f85149",
     },
     "light": {
         "bg": "#fffefe", "border": "#d0d7de",
         "fg": "#24292f", "key": "#953800", "val": "#0969da",
         "dots": "#6e7781", "art": "#24292f",
+        "green": "#1a7f37", "red": "#cf222e",
     },
 }
 
@@ -123,7 +129,7 @@ def fetch_stats() -> bool:
       user(login: "{LOGIN}") {{
         followers {{ totalCount }}
         repositories(first: 100, ownerAffiliations: OWNER) {{
-          totalCount nodes {{ stargazerCount }}
+          totalCount nodes {{ name stargazerCount }}
         }}
         repositoriesContributedTo(
           contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]
@@ -155,7 +161,45 @@ def fetch_stats() -> bool:
         commits=commits,
         followers=user["followers"]["totalCount"],
     )
+    fetch_loc(token, [n["name"] for n in user["repositories"]["nodes"]])
     return True
+
+
+def fetch_loc(token: str, repo_names: list[str]) -> None:
+    """Sum lines added/deleted by LOGIN across repos via the REST stats API.
+
+    GitHub computes these stats lazily and answers 202 until ready, so each
+    repo is retried a few times. On total failure the fallback STATS stand.
+    """
+    total_add = total_del = 0
+    ok = False
+    for name in repo_names:
+        url = f"https://api.github.com/repos/{LOGIN}/{name}/stats/contributors"
+        data = None
+        for _ in range(8):
+            req = urllib.request.Request(
+                url, headers={"Authorization": f"bearer {token}"}
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    body = resp.read()
+                    if resp.status == 202 or not body.strip():
+                        time.sleep(3)
+                        continue
+                    data = json.loads(body)
+                    break
+            except Exception:
+                time.sleep(2)
+        if not isinstance(data, list):
+            continue
+        ok = True
+        for c in data:
+            if c.get("author") and c["author"].get("login") == LOGIN:
+                for w in c["weeks"]:
+                    total_add += w["a"]
+                    total_del += w["d"]
+    if ok:
+        STATS.update(loc_add=total_add, loc_del=total_del)
 
 
 # ---------------------------------------------------------------- info lines
@@ -210,6 +254,21 @@ def stat_pair(k1, v1, k2, v2, split):
     ]
 
 
+def loc_line():
+    s = STATS
+    net = f"{s['loc_add'] - s['loc_del']:,}"
+    add = f"{s['loc_add']:,}++"
+    dele = f"{s['loc_del']:,}--"
+    key = "Lines of Code on GitHub:"
+    used = 2 + len(key) + 1 + len(net) + 3 + len(add) + 2 + len(dele) + 2
+    dots = "." * max(INFO_WIDTH - used, 1)
+    return [
+        (". ", "dots"), (key, "key"), (dots, "dots"), (" ", "fg"),
+        (net, "val"), (" ( ", "fg"), (add, "green"), (", ", "fg"),
+        (dele, "red"), (" )", "fg"),
+    ]
+
+
 def info_lines():
     s = STATS
     return [
@@ -236,6 +295,7 @@ def info_lines():
                   "Stars", str(s["stars"]), split=40),
         stat_pair("Commits", f"{s['commits']:,}",
                   "Followers", str(s["followers"]), split=40),
+        loc_line(),
     ]
 
 
@@ -261,7 +321,8 @@ def build_svg(theme: dict, art: list[str]) -> str:
 
     t = theme
     out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+        f'<svg xmlns="http://www.w3.org/2000/svg" '
+        f'width="{round(width * SCALE)}" height="{round(height * SCALE)}" '
         f'viewBox="0 0 {width} {height}" font-family="Menlo, Consolas, \'DejaVu Sans Mono\', monospace" '
         f'font-size="{FONT_SIZE}px">',
         "<style>",
