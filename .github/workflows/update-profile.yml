@@ -1,0 +1,36 @@
+name: Update profile card
+
+on:
+  schedule:
+    - cron: "23 8 * * *" # daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install Pillow
+
+      - name: Regenerate SVGs
+        # ACCESS_TOKEN (classic PAT, `repo` scope) includes private repo and
+        # commit counts; without the secret it falls back to the public-only
+        # counts visible to the default workflow token.
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || github.token }}
+        run: python generate_profile.py avatar.png
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "Xavier Agostino"
+          git config user.email "52009067+XavierAgostino@users.noreply.github.com"
+          git add dark_mode.svg light_mode.svg
+          git diff --cached --quiet || (git commit -m "Refresh profile card" && git push)

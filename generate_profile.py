@@ -2,10 +2,17 @@
 """Generate dark_mode.svg / light_mode.svg for the profile README.
 
 Usage: python3 generate_profile.py [path/to/avatar.png]
-Stats are set in the STATS dict below — update them and rerun to refresh.
+
+If an ACCESS_TOKEN / GITHUB_TOKEN env var is set, live stats are fetched
+from the GitHub GraphQL API; otherwise the STATS fallback below is used.
+A token that can see private repos (a classic PAT with `repo` scope) is
+needed for private repo/commit counts to be included.
 """
 
+import json
+import os
 import sys
+import urllib.request
 from datetime import date
 from html import escape
 
@@ -13,7 +20,9 @@ from PIL import Image, ImageOps
 
 # ---------------------------------------------------------------- config
 
-STATS = {
+LOGIN = "XavierAgostino"
+
+STATS = {  # fallback when no API token is available (snapshot 2026-06-12)
     "repos": 16,
     "contributed": 3,
     "stars": 4,
@@ -21,7 +30,8 @@ STATS = {
     "followers": 6,
 }
 
-BIRTHDATE = date(2003, 7, 14)  # uptime = age
+BIRTHDATE = date(2003, 7, 14)        # uptime = age
+ACCOUNT_CREATED = date(2019, 6, 19)  # first year to count commits from
 
 ART_WIDTH = 48          # ASCII art columns
 INFO_WIDTH = 62         # right-column width in characters
@@ -86,6 +96,62 @@ def ascii_art(path: str) -> list[str]:
             row += RAMP[min(int(lum * len(RAMP)), len(RAMP) - 1)]
         rows.append(row.rstrip())
     return rows
+
+
+# ---------------------------------------------------------------- stats
+
+
+def fetch_stats() -> bool:
+    """Refresh STATS from the GitHub GraphQL API. Returns True on success."""
+    token = os.environ.get("ACCESS_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if not token:
+        return False
+
+    today = date.today()
+    year_fields = ""
+    for y in range(ACCOUNT_CREATED.year, today.year + 1):
+        to = f"{y + 1}-01-01T00:00:00Z" if y < today.year else f"{today}T00:00:00Z"
+        year_fields += (
+            f'y{y}: contributionsCollection(from: "{y}-01-01T00:00:00Z", to: "{to}") '
+            "{ totalCommitContributions restrictedContributionsCount } "
+        )
+    query = f"""query {{
+      user(login: "{LOGIN}") {{
+        followers {{ totalCount }}
+        repositories(first: 100, ownerAffiliations: OWNER) {{
+          totalCount nodes {{ stargazerCount }}
+        }}
+        repositoriesContributedTo(
+          contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]
+        ) {{ totalCount }}
+        {year_fields}
+      }}
+    }}"""
+
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": query}).encode(),
+        headers={"Authorization": f"bearer {token}"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            user = json.load(resp)["data"]["user"]
+    except Exception as e:  # noqa: BLE001 - fall back to the snapshot
+        print(f"stats fetch failed ({e}), using fallback STATS", file=sys.stderr)
+        return False
+
+    commits = sum(
+        v["totalCommitContributions"] + v["restrictedContributionsCount"]
+        for k, v in user.items() if k.startswith("y")
+    )
+    STATS.update(
+        repos=user["repositories"]["totalCount"],
+        contributed=user["repositoriesContributedTo"]["totalCount"],
+        stars=sum(n["stargazerCount"] for n in user["repositories"]["nodes"]),
+        commits=commits,
+        followers=user["followers"]["totalCount"],
+    )
+    return True
 
 
 # ---------------------------------------------------------------- info lines
@@ -175,12 +241,14 @@ def info_lines():
 def build_svg(theme: dict, art: list[str]) -> str:
     info = info_lines()
     n = max(len(art), len(info))
+    offset = (n - len(info)) // 2  # vertically center the info column
     rows = []
     for i in range(n):
         segs = []
         art_row = art[i] if i < len(art) else ""
         segs.append((art_row.ljust(ART_WIDTH) + GAP, "art"))
-        segs.extend(info[i] if i < len(info) else [("", "fg")])
+        j = i - offset
+        segs.extend(info[j] if 0 <= j < len(info) else [("", "fg")])
         rows.append(segs)
 
     cols = ART_WIDTH + len(GAP) + INFO_WIDTH
@@ -212,6 +280,7 @@ def build_svg(theme: dict, art: list[str]) -> str:
 
 def main():
     avatar = sys.argv[1] if len(sys.argv) > 1 else "avatar.png"
+    print("stats:", "live" if fetch_stats() else "fallback snapshot")
     art = ascii_art(avatar)
     for name, theme in THEMES.items():
         path = f"{name}_mode.svg"
