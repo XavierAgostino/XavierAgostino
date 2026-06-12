@@ -21,7 +21,7 @@ STATS = {
     "followers": 6,
 }
 
-ACCOUNT_CREATED = date(2019, 6, 19)  # uptime = GitHub account age
+BIRTHDATE = date(2003, 7, 14)  # uptime = age
 
 ART_WIDTH = 48          # ASCII art columns
 INFO_WIDTH = 62         # right-column width in characters
@@ -94,9 +94,9 @@ def ascii_art(path: str) -> list[str]:
 
 def uptime() -> str:
     today = date.today()
-    y = today.year - ACCOUNT_CREATED.year
-    m = today.month - ACCOUNT_CREATED.month
-    d = today.day - ACCOUNT_CREATED.day
+    y = today.year - BIRTHDATE.year
+    m = today.month - BIRTHDATE.month
+    d = today.day - BIRTHDATE.day
     if d < 0:
         m -= 1
         prev = date(today.year, today.month, 1)
