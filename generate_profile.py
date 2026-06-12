@@ -328,6 +328,7 @@ def build_svg(theme: dict, art: list[str]) -> str:
         "<style>",
         f".fg{{fill:{t['fg']}}} .key{{fill:{t['key']}}} .val{{fill:{t['val']}}}",
         f".dots{{fill:{t['dots']}}} .art{{fill:{t['art']}}}",
+        f".green{{fill:{t['green']}}} .red{{fill:{t['red']}}}",
         f".bold{{fill:{t['fg']};font-weight:600}}",
         "</style>",
         f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="14" '
