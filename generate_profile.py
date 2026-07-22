@@ -283,7 +283,7 @@ def info_lines():
         kv("Languages.Computer", "HTML, CSS, SQL, JSON, YAML"),
         kv("Languages.Real", "English"),
         [(".", "dots")],
-        kv("Hobbies.Software", "Building tools I wish existed"),
+        kv("Hobbies.Software", "Improving Processes"),
         kv("Hobbies.Offline", "Football, Chess, Catan"),
         [("", "fg")],
         rule("Contact"),
